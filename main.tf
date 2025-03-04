@@ -72,14 +72,17 @@ resource "aws_iam_role" "eks_node_role" {
         Action = "sts:AssumeRole"
         Effect = "Allow"
         Principal = {
-          Service = "ec2.amazonaws.com"
+          Service = [
+            "ec2.amazonaws.com",
+            "eks.amazonaws.com"
+          ]
         }
       }
     ]
   })
 }
 
-# Attach required policies to the IAM role
+# Attach policies to the IAM role
 resource "aws_iam_role_policy_attachment" "eks_node_policy" {
   role       = aws_iam_role.eks_node_role.name
   policy_arn = "arn:aws:iam::aws:policy/AmazonEKSWorkerNodePolicy"
