@@ -13,7 +13,7 @@ variable "cluster_name" {
 variable "cluster_version" {
   description = "Kubernetes version for the EKS cluster"
   type        = string
-  default     = "1.32"
+  default     = "1.29"  # Updated to match the HashiCorp example
 }
 
 variable "vpc_cidr" {
@@ -38,4 +38,10 @@ variable "public_subnets" {
   description = "CIDR blocks for public subnets"
   type        = list(string)
   default     = ["10.0.101.0/24", "10.0.102.0/24", "10.0.103.0/24"]
+}
+
+variable "key_name" {
+  description = "Name of the SSH key pair"
+  type        = string
+  default     = "eks-key-pair"
 }
