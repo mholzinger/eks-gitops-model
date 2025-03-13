@@ -45,3 +45,10 @@ variable "key_name" {
   type        = string
   default     = "eks-key-pair"
 }
+
+variable "argocd_auth_token" {
+  description = "Authentication token for the ArgoCD provider"
+  type        = string
+  sensitive   = true # Mark as sensitive to avoid exposing it in logs
+}
+

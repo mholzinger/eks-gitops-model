@@ -17,3 +17,4 @@ output "region" {
   description = "The AWS region where the cluster is deployed"
   value       = var.aws_region
 }
+
