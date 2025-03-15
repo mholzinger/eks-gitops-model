@@ -8,6 +8,11 @@ output "cluster_endpoint" {
   value       = module.eks.cluster_endpoint
 }
 
+output "cluster_certificate_authority_data" {
+  description = "The base64-encoded certificate data required to communicate with the cluster"
+  value       = module.eks.cluster_certificate_authority_data
+}
+
 output "cluster_security_group_id" {
   description = "The security group ID associated with the EKS cluster"
   value       = module.eks.cluster_security_group_id
@@ -23,7 +28,3 @@ output "vpc_id" {
   value       = module.vpc.vpc_id
 }
 
-output "kubeconfig" {
-  description = "Kubeconfig file for the EKS cluster"
-  value       = module.eks.kubeconfig
-}

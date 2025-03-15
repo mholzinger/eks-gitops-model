@@ -1,5 +1,9 @@
-provider "argocd" {
-  server_addr = "argocd-server.argocd.svc.cluster.local:443"
-  auth_token  = var.argocd_auth_token
-  insecure    = true
+terraform {
+  required_providers {
+    argocd = {
+      source  = "oboukili/argocd"
+      version = "~> 6.0"
+    }
+  }
 }
+

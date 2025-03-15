@@ -1,15 +1,14 @@
 terraform {
   required_providers {
-    argocd = {
-      source  = "argoproj-labs/argocd"
-      # https://registry.terraform.io/providers/argoproj-labs/argocd/latest
-      version = "~> 6.0"
+    helm = {
+      source  = "hashicorp/helm"
+      version = "~> 2.0"
     }
   }
 }
 
-provider "argocd" {
-  server_addr = "argocd-server.argocd.svc.cluster.local:443"
-  auth_token  = var.argocd_auth_token
-  insecure    = true
+provider "helm" {
+  kubernetes {
+    config_path = "~/.kube/config"
+  }
 }

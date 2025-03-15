@@ -1,5 +1,6 @@
 variable "argocd_auth_token" {
-  description = "ArgoCD authentication token"
+  description = "Authentication token for the ArgoCD provider"
   type        = string
   sensitive   = true
 }
+
