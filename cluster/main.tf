@@ -8,8 +8,9 @@ resource "random_string" "suffix" {
 }
 
 module "vpc" {
-  source  = "terraform-aws-modules/vpc/aws"
-  version = "5.19.0"
+#  source  = "terraform-aws-modules/vpc/aws"
+#  version = "5.19.9"
+  source = "git::https://github.com/terraform-aws-modules/terraform-aws-vpc.git?ref=961c9b51e3ed3959d9419f019e7085c087bf7297"  # commit hash of version 5.19.0
 
   name = "eks-gitops-vpc"
   cidr = "10.0.0.0/16"
@@ -39,11 +40,12 @@ data "aws_availability_zones" "available" {
 }
 
 module "eks" {
-  source  = "terraform-aws-modules/eks/aws"
-  version = "20.34.0"
+  #source  = "terraform-aws-modules/eks/aws"
+  #version = "20.34.0"
+  source = "git::https://github.com/terraform-aws-modules/terraform-aws-eks.git?ref=dd2089b73b4ff296e519830efdfda760e8d52b8a" # commit hash of version 20.34.0
 
   cluster_name    = local.cluster_name
-  cluster_version = "1.29"
+  cluster_version = "1.31"
 
   cluster_endpoint_public_access           = true
   enable_cluster_creator_admin_permissions = true
